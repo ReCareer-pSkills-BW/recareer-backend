@@ -2,15 +2,20 @@ const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
 
-const reCareerRoutes = require('../config/routes');
+const adminRoutes = require('../config/adminRoutes');
 const server = express();
 
+// Global Middleware
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-reCareerRoutes(server);
-
+// Initial GET
 server.get('/', (req, res) => {
   res.send(`API is running ...`);
 });
+
+// Routers
+server.use('api/admin', adminRoutes);
+
+module.exports = server;
