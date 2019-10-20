@@ -1,29 +1,30 @@
 const express = require('express');
-const adminRouter = express.Router();
+const AdminRouter = express.Router();
 const db = require('../data/models/adminModel');
 // //Middleware
-const validateUser = require('../middleware/validateUser');
+const validateAdmin = require('../middleware/validateAdmin');
 
 //CRUD
 ////Create
-adminRouter.post('/new_account/', validateUser, (req, res) => {
+AdminRouter.post('/new_provider/', validateAdmin, (req, res) => {
   const newAccount = req.body;
+
   db.add(newAccount)
-    .then(account => {
-      res.status(201).json({ msg: `new account created`, account });
+    .then(admin => {
+      res.status(201).json({ msg: `new account created`, admin });
     })
     .catch(err => {
-      console.table(err);
-      res.status(500).json({ err: `Unable to add new account: ${err}` });
+      console.dir(err);
+      res.status(500).json({ err: `Unable to add new account`, ...err });
     });
 });
 
 ////Read
 //All
-adminRouter.get('/', (req, res) => {
+AdminRouter.get('/', (req, res) => {
   db.find()
-    .then(accounts => {
-      res.status(200).json(accounts);
+    .then(admin => {
+      res.status(200).json(admin);
     })
     .catch(err => {
       res.status(500).json({ ...err });
@@ -31,7 +32,7 @@ adminRouter.get('/', (req, res) => {
 });
 
 //ById
-adminRouter.get('/:id', (req, res) => {
+AdminRouter.get('/:id', (req, res) => {
   const id = req.params.id;
   db.findById(id)
     .then(id => {
@@ -45,7 +46,7 @@ adminRouter.get('/:id', (req, res) => {
 });
 
 ////Update
-adminRouter.put('/:id', (req, res) => {
+AdminRouter.put('/:id', (req, res) => {
   const body = req.body;
   const id = req.params.id;
   db.update(id, body)
@@ -58,7 +59,7 @@ adminRouter.put('/:id', (req, res) => {
 });
 
 ////Delete
-adminRouter.delete('/:id', (req, res) => {
+AdminRouter.delete('/:id', (req, res) => {
   const id = req.params.id;
   db.remove(id)
     .then(account => {
@@ -69,4 +70,4 @@ adminRouter.delete('/:id', (req, res) => {
     });
 });
 
-module.exports = adminRouter;
+module.exports = AdminRouter;

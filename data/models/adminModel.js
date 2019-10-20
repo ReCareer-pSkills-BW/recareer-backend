@@ -9,17 +9,17 @@ module.exports = {
 };
 
 function find() {
-  return db('accounts');
+  return db('admin');
 }
 
 function findById(id) {
-  return db('accounts')
+  return db('admin')
     .where({ id })
     .first();
 }
 
 function add(account) {
-  return db('accounts')
+  return db('admin')
     .insert(account)
     .then(id => {
       return findById(id[0]);
@@ -27,13 +27,13 @@ function add(account) {
 }
 
 function remove(id) {
-  return db('accounts')
+  return db('admin')
     .where({ id })
     .del();
 }
 
 function update(id, changes) {
-  return db('accounts')
+  return db('admin')
     .where({ id })
     .update(changes, '*');
 }
