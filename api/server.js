@@ -2,7 +2,8 @@ const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
 
-const adminRoutes = require('../config/adminRoutes');
+const AdminRouter = require('../config/adminRoutes');
+const protectedRouter = require('../config/protectedRoutes');
 const server = express();
 
 // Global Middleware
@@ -16,6 +17,6 @@ server.get('/', (req, res) => {
 });
 
 // Routers
-server.use('api/admin', adminRoutes);
+server.use('/api/admin', AdminRouter);
 
 module.exports = server;
