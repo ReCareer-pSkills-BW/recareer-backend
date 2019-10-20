@@ -46,7 +46,7 @@ AdminRouter.get('/:id', (req, res) => {
 });
 
 ////Update
-AdminRouter.put('/:id', (req, res) => {
+AdminRouter.put('/:id', validateAdmin, (req, res) => {
   const body = req.body;
   const id = req.params.id;
   db.update(id, body)
