@@ -1,10 +1,12 @@
 const protectedRouter = require('express').Router();
-const validateAdmin = require('../middleware/validateAdmin');
+const validateAuth = require('../middleware/validateAuth');
 const db = require('../data/dbConfig');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-protectedRouter.post('/register', validateAdmin, (req, res) => {
+
+// Register new admin account
+protectedRouter.post('/register', validateAuth, (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 12);
 
   db.register(req.body)
@@ -15,3 +17,10 @@ protectedRouter.post('/register', validateAdmin, (req, res) => {
       res.status(500).json({ ...err, msg: `Unable to register account` });
     });
 });
+
+
+protectedRouter.post('/login', (req, res) => {
+    
+})
+
+module.exports = protectedRouter;

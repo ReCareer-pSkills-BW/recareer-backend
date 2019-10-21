@@ -1,22 +1,6 @@
-const cors = require('cors');
-const express = require('express');
-const helmet = require('helmet');
+const primaryRouter = require('express').Router();
 
-const AdminRouter = require('../config/adminRoutes');
-const protectedRouter = require('../config/protectedRoutes');
-const server = express();
+// API Subroutes
 
-// Global Middleware
-server.use(helmet());
-server.use(cors());
-server.use(express.json());
 
-// Initial GET
-server.get('/', (req, res) => {
-  res.send(`API is running ...`);
-});
-
-// Routers
-server.use('/api/admin', AdminRouter);
-
-module.exports = server;
+module.exports = primaryRouter;
