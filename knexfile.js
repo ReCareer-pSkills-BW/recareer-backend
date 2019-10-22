@@ -10,10 +10,10 @@ module.exports = {
       filename: './data/recareer.db3'
     },
     migrations: {
-      directory: './data/migrations/recareer'
+      directory: './data/migrations'
     },
     seeds: {
-      directory: './data/seeds/recareer'
+      directory: './data/seeds'
     }
   },
   staging: {
