@@ -1,22 +1,23 @@
-const primaryRouter = require('express').Router()
+const primaryRouter = require('express').Router();
 
 // API Subroutes
-const users = require('./public/users/users')
-const authPortal = require('./auth/portal')
+const users = require('./public/users/users');
+const admin = require('../api/private/admin/adminRouter');
+const adminPortal = require('./auth/adminPortal');
 
-//Call Errors Last
-const errorRouter = require('./errors/errors')
+// Errors
+const errorRouter = require('./errors/errors');
 
-// LOGIN REGISTER
-primaryRouter.use('/',authPortal)
+// Login + Register
+primaryRouter.use('/', adminPortal);
 
-//PUBLIC ROUTES
+// Public Routes
+primaryRouter.use('/public', users);
 
+// Private Routes
+primaryRouter.use('/admin', admin);
 
-//PRIVATE ROUTES
-primaryRouter.use('/users',users)
+// Error Route
+primaryRouter.use('*', errorRouter);
 
-//Handle any errors coming into API
-primaryRouter.use('*',errorRouter)
-
-module.exports = primaryRouter
+module.exports = primaryRouter;

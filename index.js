@@ -7,7 +7,7 @@ const port = process.env.PORT || 1617;
 
 // Globals
 const path = require("path");
-global.dbConfig = path.resolve(__dirname + "/data/db-config");
+global.dbConfig = path.resolve(__dirname + "/data/dbConfig");
 
 // Routes
 const primaryRouter = require("./api/server");
