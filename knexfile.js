@@ -1,11 +1,13 @@
+require('dotenv').config();
 const DBCONNECT =
-  process.env.DBCONNECT || 'postgres://postgres@localhost:1617/postgres';
+  process.env.DBCONNECT || 'postgres://postgres@localhost:5432/postgres';
 
 module.exports = {
   development: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      filename: './data/reCareer.db3'
+      filename: './data/recareer.db3'
     },
     migrations: {
       directory: './data/migrations'
@@ -14,7 +16,6 @@ module.exports = {
       directory: './data/seeds'
     }
   },
-
   staging: {
     client: 'pg',
     connection: DBCONNECT,
@@ -42,6 +43,9 @@ module.exports = {
       tableName: 'knex_migrations',
       directory: './data/migrations/production'
     },
-    seeds: './data/seeds/production'
+    seeds: {
+      directory: './data/seeds/production'
+    }
+    //debug:true,
   }
 };

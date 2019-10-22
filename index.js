@@ -1,28 +1,31 @@
-// Server
-const express = require('express');
+// Init Server
+const express = require("express");
 const server = express();
-const cors = require('cors');
-const port = process.env.port || 1617;
-require('dotenv').config();
+const cors = require("cors");
+require("dotenv").config();
+const port = process.env.PORT || 1617;
 
 // Globals
-const path = require('path');
-global.dbConfig = path.resolve(__dirname + '/data/dbConfig');
+const path = require("path");
+global.dbConfig = path.resolve(__dirname + "/data/dbConfig");
 
 // Routes
-const primaryRouter = require('./api/server');
-const errorRouter = require('./api/errors/errors');
+const primaryRouter = require("./api/server");
+const errorRouter = require("./api/errors/errors");
 
-// Config Server
+
+// Server Config
 server.use(cors());
 server.use(express.json());
 
-// URL Routes
-server.use('/api', primaryRouter);
-server.use('*', errorRouter);
+// Base Route
+server.use("/api", primaryRouter);
 
-// Server Init
+// Fallback
+server.use("*", errorRouter);
+
+// Listen
 server.listen(port, () => {
-  `Server listening on port: ${port}
-  API running ...`;
+  `Listening on port: ${port}
+                              => API running ...`
 });
