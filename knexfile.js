@@ -1,6 +1,6 @@
 require('dotenv').config();
 const DBCONNECT =
-  process.env.DBCONNECT || 'postgres://postgres@localhost:5432/postgres';
+  process.env.DATABASE_URL || 'postgres://postgres@localhost:5432/postgres';
 
 module.exports = {
   development: {
@@ -10,42 +10,47 @@ module.exports = {
       filename: './data/recareer.db3'
     },
     migrations: {
-      directory: './data/migrations'
+      directory: './data/migrations/dev'
     },
     seeds: {
-      directory: './data/seeds'
-    }
-  },
-  staging: {
-    client: 'pg',
-    connection: DBCONNECT,
+      directory: './data/seeds/dev'
+    },
     pool: {
-      min: 2,
-      max: 10
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done);
+      }
     },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './data/migrations/staging'
+    staging: {
+      client: 'pg',
+      connection: DBCONNECT,
+      pool: {
+        min: 2,
+        max: 10
+      },
+      migrations: {
+        tableName: 'knex_migrations',
+        directory: './data/migrations/staging'
+      },
+      seeds: {
+        directory: './data/seeds/staging'
+      }
     },
-    seeds: {
-      directory: './data/seeds/staging'
-    }
-  },
 
-  production: {
-    client: 'pg',
-    connection: DBCONNECT,
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './data/migrations/production'
-    },
-    seeds: {
-      directory: './data/seeds/production'
+    production: {
+      client: 'pg',
+      connection: DBCONNECT,
+      pool: {
+        min: 2,
+        max: 10
+      },
+      migrations: {
+        tableName: 'knex_migrations',
+        directory: './data/migrations/production'
+      },
+      seeds: {
+        directory: './data/seeds/production'
+      }
+      //debug:true,
     }
-    //debug:true,
   }
 };
