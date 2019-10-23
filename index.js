@@ -12,7 +12,7 @@ global.dbConfig = path.resolve(__dirname + '/data/dbConfig');
 
 // Routes
 const primaryRouter = require('./api/server');
-const errorRouter = require('./api/errors/errors');
+// const errorRouter = require('./api/errors/errors');
 
 // Server Config
 server.use(helmet());
@@ -23,10 +23,15 @@ server.use(express.json());
 server.use('/api', primaryRouter);
 
 // Fallback
-server.use('/*', errorRouter);
+// server.use('*', errorRouter);
+
+// Init GET
+server.use('/', (req, res) => {
+  res.status(200).json({ msg: `API running ...` });
+});
 
 // Listen
 server.listen(port, () => {
-  `\n Listening on port: ${port}\n
-                              => API running ...\n`;
+  console.log(`\n Listening on port: ${port}
+                              => API running ...\n`);
 });

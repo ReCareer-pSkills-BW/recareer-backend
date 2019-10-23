@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const dbModel = require('./portalModel');
+const dbModel = require('./adminPortalModel');
 
 // Login
 router.post('/login', (req, res) => {
