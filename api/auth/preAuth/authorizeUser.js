@@ -13,5 +13,5 @@ function genToken(admin) {
   admin.password && delete admin.password;
   admin.usename && delete admin.username;
 
-  return { admin, token_type, token_type };
+  return { admin, token_type, token };
 }
