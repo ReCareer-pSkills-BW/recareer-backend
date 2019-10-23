@@ -21,8 +21,7 @@ exports.up = function(knex) {
           .unique()
           .notNullable();
         col
-          .integer('provider_id')
-          .notNullable()
+          .foreign('provider_id')
           .references('id')
           .inTable('admin')
           .onDelete('CASCADE')
@@ -46,7 +45,7 @@ exports.up = function(knex) {
       .createTable('candidates', col => {
         col.increments();
         col
-          .string('provider_id')
+          .foreign('provider_id')
           .references('id')
           .inTable('providers')
           .onDelete('CASCADE')
@@ -54,12 +53,13 @@ exports.up = function(knex) {
         col.string('first_name');
         col.string('last_initial');
         col
-          .string('primary_skill')
+          .foreign('primary_skill')
           .references('id')
           .inTable('skills')
           .onDelete('CASCADE')
           .onUpdate('CASCADE');
         col.blob('bio', 2000);
+        col.string('profile_img');
       })
   );
 };
