@@ -1,4 +1,5 @@
 const db = require(dbConfig);
+
 module.exports = {
   findAll,
   findAllById,
@@ -6,7 +7,7 @@ module.exports = {
   add,
   editById
 };
-const table = '';
+const table = 'users';
 function findAll() {
   return db(table);
 }

@@ -1,10 +1,12 @@
 const db = require(dbConfig);
+
 module.exports = {
   findAll,
   findById,
   findByUserName,
   addUser
 };
+
 const table = 'admin';
 function findAll() {
   return db(table);
