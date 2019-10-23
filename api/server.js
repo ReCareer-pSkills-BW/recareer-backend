@@ -6,7 +6,7 @@ const admin = require('../api/private/admin/adminRouter');
 const adminPortal = require('./auth/adminPortal');
 
 // Errors
-const errorRouter = require('./errors/errors');
+// const errorRouter = require('./errors/errors');
 
 // Login + Register
 primaryRouter.use('/', adminPortal);
@@ -18,6 +18,8 @@ primaryRouter.use('/public', users);
 primaryRouter.use('/admin', admin);
 
 // Error Route
-primaryRouter.use('*', errorRouter);
+// primaryRouter.use('*', errorRouter);
+
+// console.dir(primaryRouter);
 
 module.exports = primaryRouter;
