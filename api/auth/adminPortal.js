@@ -6,10 +6,10 @@ router.post('/login', (req, res) => {
   const b = req.body;
   if (b && b.username && b.password) {
     dbModel.findByUserName(b).then(b => {
-      res.status(200).json({ messag: 'success', ...b });
+      res.status(200).json({ msg: 'success', ...b });
     });
   } else {
-    res.json({ error: 'Username & Password Required' });
+    res.json({ err: 'Username & Password Required' });
   }
 });
 
@@ -19,11 +19,11 @@ router.post('/register', (req, res) => {
     dbModel
       .addUser(b)
       .then(b => {
-        res.status(200).json({ messag: 'success', ...b });
+        res.status(200).json({ msg: 'success', ...b });
       })
       .catch(err => res.status(401).json(err));
   } else {
-    res.json({ error: 'Username & Password Required' });
+    res.json({ err: 'Username & Password Required' });
   }
 });
 
