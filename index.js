@@ -19,16 +19,16 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
+// Init GET
+server.get('/', (req, res) => {
+  res.send({ msg: `API running ...` });
+});
+
 // Base Route
 server.use('/api', primaryRouter);
 
 // Fallback
 server.use('*', errorRouter);
-
-// Init GET
-server.use('/', (req, res) => {
-  res.send({ msg: `API running ...` });
-});
 
 // Listen
 server.listen(port, () => {

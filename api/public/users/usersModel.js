@@ -3,32 +3,24 @@ const db = require(dbConfig);
 module.exports = {
   findAll,
   findAllById,
-  remove,
-  add,
-  editById
+  findAllByProvider
 };
-const table = 'users';
+
+const candidates = 'candidates';
+const providers = 'providers'
+
 function findAll() {
-  return db(table);
+  return db(providers);
 }
+
+
 function findAllById(id) {
   id = Array.isArray(id) ? [id] : id;
-  return db(table)
+  return db(providers)
     .where({ id })
     .first();
 }
-function remove(id) {
-  return db(table)
-    .where({ id })
-    .del();
-}
-function editById(id, update) {
-  return db(table)
-    .where({ id })
-    .update(update, '*');
-}
-function add(obj) {
-  return db(table)
-    .insert(obj)
-    .then(findById(id));
+
+function findAllByProvider() {
+
 }
