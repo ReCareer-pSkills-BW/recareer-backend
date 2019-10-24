@@ -2,21 +2,25 @@ const db = require(dbConfig);
 
 module.exports = {
   findAll,
-  findAllById
+  findAllById,
+  findAllByProvider
 };
 
-const table = 'admin';
-const table2 = 'candidates'
+const candidates = 'candidates';
+const providers = 'providers'
+
 function findAll() {
-  return db(table);
+  return db(providers);
 }
-// Need to add filter by provider.id
 
 
 function findAllById(id) {
   id = Array.isArray(id) ? [id] : id;
-  return db(table)
+  return db(providers)
     .where({ id })
     .first();
 }
-// Need to add filter by provider.id
+
+function findAllByProvider() {
+
+}
