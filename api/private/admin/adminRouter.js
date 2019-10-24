@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const dbModel = require('./adminModel');
 
-router.get('/', (req, res) => {
+router.get('/admin/', (req, res) => {
   return dbModel
     .findAll()
     .then(p => {
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       res.status(404).json({ message: 'SOMEMESSAGE', ...e });
     });
 });
-router.get('/:id', (req, res) => {
+router.get('/admin/:id', (req, res) => {
   const { id } = req.params;
   return dbModel
     .findAllById(id)
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/admin/', (req, res) => {
   const { body } = req;
   return dbModel
     .add(body)
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
       res.status(404).json({ message: 'SOMEMESSAGE', ...e });
     });
 });
-router.put('/:id', (req, res) => {
+router.put('/admin/:id', (req, res) => {
   const { id } = req.params;
   const { body } = req;
 
@@ -47,7 +47,7 @@ router.put('/:id', (req, res) => {
       res.status(404).json({ message: 'SOMEMESSAGE', ...e });
     });
 });
-router.delete('/:id', (req, res) => {
+router.delete('/admin/:id', (req, res) => {
   const { id } = req.params;
 
   return dbModel
