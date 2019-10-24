@@ -7,6 +7,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
+    debug: true,
     connection: {
       filename: './data/recareer.sqlite3'
     },
@@ -21,6 +22,7 @@ module.exports = {
         conn.run('PRAGMA foreign_keys = ON', done);
       }
     },
+
     staging: {
       client: 'pg',
       connection: DBCONNECT,
@@ -50,8 +52,8 @@ module.exports = {
       },
       seeds: {
         directory: './data/seeds/production'
-      }
-      //debug:true,
+      },
+      debug:true,
     }
   }
 };
