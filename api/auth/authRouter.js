@@ -3,7 +3,7 @@ const dbModel = require('./authModel');
 const bcrypt = require('bcryptjs');
 const { genToken } = require('./preAuth/generateToken');
 
-// Login
+// Register
 router.post('/register', (req, res) => {
   const body = req.body;
   const { username, password } = req.body;
@@ -22,7 +22,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-// Register
+// Login
 router.post('/login', (req, res) => {
   const body = req.body;
   const { username, password } = req.body;
