@@ -1,5 +1,5 @@
 const jwt = 'jsonwebtoken';
-const secret = process.env.SECRET || 'C00kies!AREfor3Ating^_^erfiehjnqoeunfnjwe';
+const secret = process.env.SECRET;
 
 module.exports = { genToken };
 
