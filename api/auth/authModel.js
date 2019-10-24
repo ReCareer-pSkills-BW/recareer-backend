@@ -2,22 +2,22 @@ const db = require(dbConfig);
 
 module.exports = {
   findByUserName,
-  addUser
+  register
 };
 
 const table = 'admin';
 
-function findByUserName(user) {
-  if (user.username) {
-    const username = user.username;
+function findByUserName(admin) {
+  if (admin.username) {
+    const username = admin.username;
     return db(table)
       .where({ username })
       .first();
   }
 }
 
-function addUser(obj) {
+function register(admin) {
   return db(table)
-    .insert(obj)
+    .insert(admin)
     .then(([id]) => findById(id));
 }

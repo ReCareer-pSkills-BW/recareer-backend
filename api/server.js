@@ -2,7 +2,7 @@ const primaryRouter = require('express').Router();
 
 // API Subroutes
 const users = require('./public/users/users');
-const auth = require('./auth/adminPortal');
+const auth = require('./auth/authRouter');
 const admin = require('./private/admin/adminRouter');
 
 // Errors

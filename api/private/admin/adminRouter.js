@@ -5,10 +5,10 @@ router.get('/admin/', (req, res) => {
   return dbModel
     .findAll()
     .then(p => {
-      res.status(200).json({ message: `SUCCESS`, ...p });
+      res.status(200).json({ msg: `Returned all accounts`, ...p });
     })
     .catch(e => {
-      res.status(404).json({ message: 'SOMEMESSAGE', ...e });
+      res.status(404).json({ msg: 'Error', ...e });
     });
 });
 router.get('/admin/:id', (req, res) => {
@@ -16,10 +16,10 @@ router.get('/admin/:id', (req, res) => {
   return dbModel
     .findAllById(id)
     .then(p => {
-      res.status(200).json({ message: `SUCCESS`, ...p });
+      res.status(200).json({ msg: `Fetch account success`, ...p });
     })
     .catch(e => {
-      res.status(404).json({ message: 'SOMEMESSAGE', ...e });
+      res.status(404).json({ msg: `Error`, ...e });
     });
 });
 
@@ -28,12 +28,13 @@ router.post('/admin/', (req, res) => {
   return dbModel
     .add(body)
     .then(p => {
-      res.status(201).json({ message: `SUCCESS`, ...p });
+      res.status(201).json({ msg: `Account created`, ...p });
     })
     .catch(e => {
-      res.status(404).json({ message: 'SOMEMESSAGE', ...e });
+      res.status(404).json({ msg: 'Error', ...e });
     });
 });
+
 router.put('/admin/:id', (req, res) => {
   const { id } = req.params;
   const { body } = req;
@@ -41,22 +42,23 @@ router.put('/admin/:id', (req, res) => {
   return dbModel
     .editById(id)
     .then(p => {
-      res.status(200).json({ message: `SUCCESS`, ...p });
+      res.status(200).json({ msg: `Accounted updated`, ...p });
     })
     .catch(e => {
-      res.status(404).json({ message: 'SOMEMESSAGE', ...e });
+      res.status(404).json({ msg: 'Error', ...e });
     });
 });
+
 router.delete('/admin/:id', (req, res) => {
   const { id } = req.params;
 
   return dbModel
     .remove(id)
     .then(p => {
-      res.status(201).json({ message: `SUCCESS`, ...p });
+      res.status(201).json({ msg: `Account deleted`, ...p });
     })
     .catch(e => {
-      res.status(404).json({ message: 'SOMEMESSAGE', ...e });
+      res.status(404).json({ msg: 'Error', ...e });
     });
 });
 module.exports = router;
