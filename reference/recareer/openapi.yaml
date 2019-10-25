@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: recareer
+  version: '1.0'
+  description: Data for the Lambda School Prisoner Skills project
+  contact:
+    name: Melissa Murphy
+    url: 'https://github.com/ReCareer-pSkills-BW/recareer-backend/issues'
+    email: melissamurphy.ca@gmail.com
+servers:
+  - description: Heroku
+    url: 'https://recareer.herokuapp.com/api'
+  - url: 'http://localhost:61617/api'
+    description: LocalHost
+paths:
+  /public:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  '/public/:id':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  '/public/:id/candidates':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  /private/admin/:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+  /auth/login:
+    post:
+      summary: ''
+      description: Login for provider admins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                "('username', 50)":
+                  type: string
+                "('password', 255)":
+                  type: string
+            examples: {}
+        description: |-
+          {
+            "username": "string"
+            "password": "string"
+          }
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  /auth/register:
+    post:
+      summary: ''
+      responses:
+        '201':
+          description: Created
+      description: Register new insitution admin
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                "('password', 255)":
+                  type: string
+                "('username', 50)":
+                  type: string
+                "('email', 100)":
+                  type: string
+              required:
+                - "('password', 255)"
+                - "('username', 50)"
+                - "('email', 100)"
+        description: |-
+          {
+            "username": "string"
+            "password": "string",
+            "email": "string"
+          }
+  '/private/admin/:id':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+    delete:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+components:
+  schemas: {}
