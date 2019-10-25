@@ -5,6 +5,7 @@ router.get('/', (req, res) => {
   return dbModel
     .findAll()
     .then(p => {
+      console.log(p);
       res.status(200).json({ msg: `Returned all providers`, ...p });
     })
     .catch(e => {
@@ -35,6 +36,5 @@ router.get('/:id/candidates', (req, res) => {
       res.status(404).json({ msg: 'Error', ...e });
     });
 }); // Return candidates by provider id (need to finish)
-
 
 module.exports = router;

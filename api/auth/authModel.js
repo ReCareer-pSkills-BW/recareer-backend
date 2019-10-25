@@ -42,6 +42,6 @@ function editById(id, update) {
 }
 function register(obj) {
   return db(table)
-    .insert(obj)
+    .insert(obj, 'id')
     .then(([id]) => findById(id));
 }
