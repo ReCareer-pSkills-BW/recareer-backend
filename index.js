@@ -6,7 +6,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 // Globals
-const port = process.env.PORT || 1617;
+const port = process.env.PORT || 61617;
 const path = require('path');
 global.dbConfig = path.resolve(__dirname + '/data/dbConfig');
 
@@ -32,6 +32,9 @@ server.use('*', errorRouter);
 
 // Listen
 server.listen(port, () => {
+  console.log(process.env.DB_ENV);
+  console.log(process.env.DATABASE_URL);
+
   console.log(`\n Listening on port: ${port}
                               => API running ...\n`);
 });

@@ -34,7 +34,7 @@ router.get('/:id/candidates', (req, res) => {
     .catch(e => {
       res.status(404).json({ msg: 'Error', ...e });
     });
-}); // Return candidates by provider id
+}); // Return candidates by provider id (need to finish)
 
 
 module.exports = router;
