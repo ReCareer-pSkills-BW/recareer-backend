@@ -1,0 +1,9 @@
+{
+  "title": "users",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}

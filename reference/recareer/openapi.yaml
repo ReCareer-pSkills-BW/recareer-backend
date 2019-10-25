@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: recareer
+  version: '1.0'
+  description: Data for the Lambda School Prisoner Skills project
+  contact:
+    name: Melissa Murphy
+    url: 'https://github.com/ReCareer-pSkills-BW/recareer-backend/issues'
+    email: melissamurphy.ca@gmail.com
+servers:
+  - url: 'http://localhost:61617/api'
+    description: local
+  - description: Heroku
+    url: 'https://recareer.herokuapp.com/api'
+paths:
+  /public:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  '/public/:id':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  '/public/:id/candidates':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  /private/admin/:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+  /auth/login:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  /auth/register:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+  '/private/admin/:id':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+    delete:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+components:
+  schemas: {}
