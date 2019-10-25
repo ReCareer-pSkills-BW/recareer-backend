@@ -11,6 +11,7 @@ router.get('/admin/', (req, res) => {
       res.status(404).json({ msg: 'Error', ...e });
     });
 });
+
 router.get('/admin/:id', (req, res) => {
   const { id } = req.params;
   return dbModel

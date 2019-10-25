@@ -5,7 +5,7 @@ exports.up = function(knex) {
       .createTable('providers', col => {
         col.increments();
         col
-          .string('name', 150)
+          .string('institution', 150)
           .unique()
           .notNullable();
       })
@@ -24,7 +24,7 @@ exports.up = function(knex) {
           .integer('provider_id')
           .unsigned()
           .references('id')
-          .inTable('admin')
+          .inTable('providers')
           .onDelete('CASCADE')
           .onUpdate('CASCADE');
         col.string('first_name', 50);
@@ -33,6 +33,7 @@ exports.up = function(knex) {
         col.string('mailing_state', 2);
         col.integer('mailing_zip', 10);
         col.string('primary_phone', 25);
+        col.string('password', 255);
       })
       // Skills
       .createTable('skills', col => {

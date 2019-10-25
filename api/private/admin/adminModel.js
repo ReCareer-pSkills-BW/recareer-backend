@@ -2,10 +2,11 @@ const db = require(dbConfig);
 
 module.exports = {
   findAll,
-  findAllById,
+  findById,
   remove,
-  add,
-  editById
+  register,
+  editById,
+  findByUserName
 };
 
 const table = 'admin';
@@ -13,11 +14,22 @@ function findAll() {
   return db(table);
 }
 
-function findAllById(id) {
+function findById(id) {
   id = Array.isArray(id) ? [id] : id;
   return db(table)
     .where({ id })
-    .first();
+    .first()
+    .then(res => console.log(res))
+    .catch(res => console.log(res));
+}
+
+function findByUserName(admin) {
+  if (admin.username) {
+    const username = admin.username;
+    return db(table)
+      .where({ username })
+      .first();
+  }
 }
 
 function remove(id) {
@@ -25,15 +37,13 @@ function remove(id) {
     .where({ id })
     .del();
 }
-
 function editById(id, update) {
   return db(table)
     .where({ id })
     .update(update, '*');
 }
-
-function add(obj) {
+function register(obj) {
   return db(table)
-    .insert(obj)
-    .then(findById(id));
+    .insert(obj, 'id')
+    .then(([id]) => findById(id));
 }

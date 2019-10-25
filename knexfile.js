@@ -1,39 +1,22 @@
 require('dotenv').config();
+const stagingdb = {
+  database: 'test',
+  user: 'postgres',
+  password: 'H0lyBatman__Yee'
+};
 
 module.exports = {
   development: {
-    client: 'sqlite',
-    useNullAsDefault: true,
+    client: 'pg',
     debug: true,
-    connection: {
-      filename: './data/recareer.sqlite3'
-    },
-    migrations: { // Working
+    connection: stagingdb,
+    migrations: {
+      // Working
       directory: './data/migrations/dev'
     },
-    seeds: { // Working
-      directory: './data/seeds/dev'
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      }
-    }
-  },
-
-  staging: {
-    client: 'pg',
-    connection: process.env.DB_STAGING,
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './data/migrations/staging'
-    },
     seeds: {
-      directory: './data/seeds/staging'
+      // Working
+      directory: './data/seeds/dev'
     }
   },
 

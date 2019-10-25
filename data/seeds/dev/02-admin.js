@@ -8,7 +8,7 @@ exports.seed = function(knex) {
         {
           id: 1,
           username: 'admin',
-          password: 'bfiouaq:ASD8fh',
+          password: 'sdaszolcjlcneuaswe',
           email: 'admin@admin.com',
           provider_id: 28,
           first_name: 'Pink',
@@ -21,7 +21,7 @@ exports.seed = function(knex) {
         {
           id: 2,
           username: 'admin2',
-          password: 'sdfidfgybfISWEySDEFVL',
+          password: 'sdaszolcjlcneuaswe',
           email: 'admin2@admin.com',
           provider_id: 74,
           first_name: 'Friday',
@@ -34,7 +34,7 @@ exports.seed = function(knex) {
         {
           id: 3,
           username: 'admin3',
-          password: 'sdludfbSIysdfSDF',
+          password: 'sdaszolcjlcneuaswe',
           email: 'admin3@admin.com',
           provider_id: 9,
           first_name: 'Roman',
