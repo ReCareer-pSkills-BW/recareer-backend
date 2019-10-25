@@ -1,18 +1,16 @@
 const db = require(dbConfig);
-
-module.exports = {
+const candidate = (module.exports = {
   findAll,
   findAllById,
   findAllByProvider
-};
+});
 
 const candidates = 'candidates';
-const providers = 'providers'
+const providers = 'providers';
 
 function findAll() {
   return db(providers);
 }
-
 
 function findAllById(id) {
   id = Array.isArray(id) ? [id] : id;
@@ -21,6 +19,7 @@ function findAllById(id) {
     .first();
 }
 
-function findAllByProvider() {
-
+function findAllByProvider(id) {
+  id = Array.isArray(id) ? [id] : id;
+  return db(candidates);
 }

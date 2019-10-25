@@ -27,6 +27,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/candidates', (req, res) => {
   const { id } = req.params;
+
   return dbModel
     .findAllByProvider(id)
     .then(p => {

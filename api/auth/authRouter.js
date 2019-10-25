@@ -44,7 +44,7 @@ router.post('/login', (req, res) => {
         .catch(err => {
           res
             .status(500)
-            .json({ err: `Server Error: Unable to register account` });
+            .json({ err: `Server Error: Unable to register account`, ...err });
         });
 });
 
