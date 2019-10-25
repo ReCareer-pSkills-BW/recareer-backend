@@ -24,17 +24,17 @@ router.get('/:id', (req, res) => {
     });
 }); // Return provider by id
 
-router.get('/:id/candidates', (req, res) => {
-  const { id } = req.params;
-  return dbModel
-    .findAllByProvider(id)
-    .then(p => {
-      res.status(200).json({ msg: `Fetch provider candidates success`, ...p });
-    })
-    .catch(e => {
-      res.status(404).json({ msg: 'Error', ...e });
-    });
-}); // Return candidates by provider id (need to finish)
+// router.get('/:id/candidates', (req, res) => {
+//   const { id } = req.params;
+//   return dbModel
+//     .findAllByProvider(id)
+//     .then(p => {
+//       res.status(200).json({ msg: `Fetch provider candidates success`, ...p });
+//     })
+//     .catch(e => {
+//       res.status(404).json({ msg: 'Error', ...e });
+//     });
+// }); // Return candidates by provider id (need to finish)
 
 
 module.exports = router;
